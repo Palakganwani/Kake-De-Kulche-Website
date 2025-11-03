@@ -1,0 +1,492 @@
+<!-- menu.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Full Menu — Kaka De Kulche</title>
+
+  <!-- Fonts (same as site) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Reuse main stylesheet -->
+  <link rel="stylesheet" href="style111.css" />
+
+  <!-- Page-specific styles to enhance the menu layout while keeping theme intact -->
+  <style>
+    /* Hero banner */
+    .menu-hero {
+      position:relative;
+      height:52vh;
+      min-height:320px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:var(--text);
+      overflow:hidden;
+      margin-top:64px; /* accommodate fixed navbar */
+    }
+    .menu-hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: url('menu-hero.jpg'); /* replace with a blurred dining/food image */
+      background-size:cover;
+      background-position:center;
+      filter: blur(6px) brightness(0.5);
+      transform: scale(1.06);
+      transition: transform 900ms cubic-bezier(.2,.9,.2,1);
+    }
+    .menu-hero .overlay{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(14,14,14,0.25), rgba(14,14,14,0.5)); }
+    .menu-hero .hero-inner{
+      position:relative;
+      z-index:2;
+      max-width:980px;
+      padding:0 20px;
+      opacity:0;
+      transform: scale(.98) translateY(8px);
+      animation: heroIn 700ms ease-out forwards 200ms;
+    }
+    @keyframes heroIn{
+      to{ opacity:1; transform:none; }
+    }
+    .menu-hero .hero-title{ font-family:var(--serif); font-size:42px; margin:0 0 10px; letter-spacing:0.4px; }
+    .menu-hero .hero-sub{ color:var(--muted); font-size:16px; margin:0; }
+
+    /* Category heading with accent underline animation */
+    .menu-section{ padding:64px 0; }
+    .menu-section .section-head{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .menu-section .cat-title{
+      font-family:var(--serif);
+      font-size:28px;
+      margin:0 0 8px;
+      position:relative;
+    }
+    .cat-title::after{
+      content:"";
+      display:block;
+      height:3px;
+      width:0;
+      background:var(--accent);
+      margin:8px auto 0;
+      border-radius:3px;
+      transition:width 420ms cubic-bezier(.2,.9,.2,1);
+    }
+    .menu-section.inview .cat-title::after{ width:72px; }
+
+    .cat-desc{ color:var(--muted); font-size:14px; margin:0; text-align:center; }
+
+    /* Menu grid & cards */
+    .menu-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      align-items:stretch;
+      margin-top:18px;
+    }
+    .menu-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms;
+      cursor:default;
+      border:1px solid rgba(255,255,255,0.03);
+      opacity:0;
+      transform: translateY(18px) scale(.995);
+    }
+    .menu-card.inview{ opacity:1; transform:none; }
+    .menu-card:hover{
+      transform:translateY(-6px) scale(1.02);
+      box-shadow:0 18px 40px rgba(0,0,0,0.6);
+    }
+    .menu-card .img-wrap{
+      width:100%;
+      height:160px;
+      overflow:hidden;
+      background:#0b0b0b;
+      display:block;
+    }
+    .menu-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition: transform 420ms ease;
+      border-bottom-left-radius:0;
+      border-bottom-right-radius:0;
+    }
+    .menu-card:hover img{ transform: scale(1.06); }
+
+    .menu-card .card-body{
+      padding:14px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .menu-card .meta{
+      flex:1 1 auto;
+    }
+    .menu-card h4{ margin:0 0 6px; font-family:var(--serif); font-size:18px; color:var(--text); }
+    .menu-card p{ margin:0; color:var(--muted); font-size:14px; line-height:1.4; }
+    .price-tag{
+      font-weight:700;
+      color:#111;
+      background:var(--accent);
+      padding:8px 12px;
+      border-radius:20px;
+      font-size:14px;
+      margin-left:12px;
+      white-space:nowrap;
+    }
+
+    /* Decorative small accent for cards (glow) */
+    .menu-card::before{
+      content:"";
+      position:absolute;
+      inset:auto 12px 12px auto;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      filter:blur(12px);
+      pointer-events:none;
+      opacity:0;
+      transition:opacity 300ms;
+    }
+    .menu-card:hover::before{ opacity:1; }
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .menu-grid{ grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:700px){
+      .menu-hero{ height:40vh; min-height:220px; margin-top:60px;}
+      .menu-grid{ grid-template-columns:1fr; }
+      .menu-card .img-wrap{ height:140px; }
+      .menu-hero .hero-title{ font-size:28px; }
+    }
+
+    /* small utilities */
+    .category-wrapper{ margin-top:12px; }
+    .section-container{ max-width:1200px; margin:0 auto; padding:0 20px; }
+  </style>
+</head>
+<body>
+  <!-- Keep header exactly the same -->
+  <header id="header" class="navbar">
+    <div class="container nav-inner">
+      <div class="logo-wrap">
+        <a href="index111.html"><img src="logoimage (1).png" alt="Kaka De Kulche Logo" class="logo" /></a>
+      </div>
+      <nav class="nav-links">
+        <a href="index111.html" class="nav-link">Home</a>
+        <a href="index111.html" class="nav-link">About</a>
+        <a href="index111.html" class="nav-link">Menu</a>
+        <a href="index111.html" class="nav-link">Gallery</a>
+        <a href="index111.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="toggle menu">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="menu-hero" aria-hidden="false">
+    <div class="overlay"></div>
+    <div class="hero-inner">
+      <h1 class="hero-title">Our Bestsellers 🍽️</h1>
+      <p class="hero-sub">From street classics to chef’s specials — taste the real flavor of Kaka De Kulche.</p>
+    </div>
+  </section>
+
+  <!-- MENU CONTENT -->
+  <main>
+    <!-- Starters -->
+    <section class="menu-section" id="starters">
+      <div class="section-container">
+        <div class="section-head">
+          <h2 class="cat-title">Starters</h2>
+          <p class="cat-desc">Light bites to begin — smoky, tangy and full of Delhi street spirit.</p>
+        </div>
+
+        <div class="menu-grid">
+          <!-- Card 1 -->
+          <article class="menu-card" data-delay="50">
+            <div class="img-wrap">
+              <img src="paneerTikka.jpg" alt="Paneer Tikka">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Paneer Tikka</h4>
+                <p>Smoky, marinated paneer grilled with aromatic spices and served with chutney.</p>
+              </div>
+              <div class="price-tag">₹220</div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="menu-card" data-delay="120">
+            <div class="img-wrap">
+              <img src="kabab1.jpg" alt="Seekh Kabab">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Seekh Kabab</h4>
+                <p>Juicy minced kebabs seasoned with traditional spices and char-grilled.</p>
+              </div>
+              <div class="price-tag">₹260</div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="menu-card" data-delay="190">
+            <div class="img-wrap">
+              <img src="chilliPaneer2.jpg" alt="Chilli Paneer">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Chilli Paneer</h4>
+                <p>Wok-tossed paneer in a spicy-sweet sauce with peppers and scallions.</p>
+              </div>
+              <div class="price-tag">₹240</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Course -->
+    <section class="menu-section" id="main-course">
+      <div class="section-container">
+        <div class="section-head">
+          <h2 class="cat-title">Main Course</h2>
+          <p class="cat-desc">Hearty plates that bring the tastes of Delhi’s lanes to your table.</p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-card" data-delay="60">
+            <div class="img-wrap">
+              <img src="EggMainCorse.jpg" alt="Egg Biryani Bucket">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Egg Biryani Bucket</h4>
+                <p>Delicious egg biryani infused with bold spices and slow-cooked perfection.</p>
+              </div>
+              <!-- <div class="price-tag">₹180</div> -->
+            <!-- </div> -->
+          </article>
+
+          <article class="menu-card" data-delay="140">
+            <div class="img-wrap">
+              <img src="paneerkholapuri main corse.jpg" alt="paneerkholapuri">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Paneer Kholapuri</h4>
+                <p>Soft paneer cubes simmered in fiery Kolhapuri gravy and aromatic spices.</p>
+              </div>
+              <!-- <div class="price-tag">₹150</div> -->
+            </div> 
+          </article>
+
+          <article class="menu-card" data-delay="210">
+            <div class="img-wrap">
+              <img src="paneer kadai kulche main.jpg" alt="paneer kadai kulche">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Paneer Kadai Kulche</h4>
+                <p>Flavorful paneer kadai paired with warm, fluffy kulchas.</p>
+              </div>
+              <!-- <div class="price-tag">₹499</div> -->
+            </div> 
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Biryani Buckets -->
+    <section class="menu-section" id="beverages">
+      <div class="section-container">
+        <div class="section-head">
+          <h2 class="cat-title">Biryani Buckets</h2>
+          <p class="cat-desc">Indulge in aromatic biryanis layered with spices, taste, and tradition.</p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-card" data-delay="80">
+            <div class="img-wrap">
+              <img src="bhuna chicken biryani bucket.jpg" alt="bhuna chicken biryani bucket">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Bhuna Chicken Biryani Bucket</h4>
+                <p>Juicy chicken slow-cooked in bhuna-style gravy and mixed with flavourful biryani rice.</p>
+              </div>
+              <!-- <div class="price-tag">₹90</div> -->
+            </div> 
+          </article>
+
+          <article class="menu-card" data-delay="160">
+            <div class="img-wrap">
+              <img src="veg biryani.jpg" alt="Masala Chaas">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Veg Biryani Bucket</h4>
+                <p>Wholesome vegetable biryani cooked to perfection with fragrant basmati rice.</p>
+              </div>
+              <!-- <div class="price-tag">₹70</div> -->
+            </div>
+          </article>
+
+          <article class="menu-card" data-delay="230">
+            <div class="img-wrap">
+              <img src="panner ticka biryani bucket.jpg" alt="panner ticka biryani">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Panner Tikka Biryani Bucket</h4>
+                <p>Smoky paneer tikka layered with flavorful biryani rice and rich spices.</p>
+              </div>
+              <!-- <div class="price-tag">₹80</div> -->
+             </div> 
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meal Combos -->
+    <section class="menu-section" id="desserts">
+      <div class="section-container">
+        <div class="section-head">
+          <h2 class="cat-title">Meal Combos</h2>
+          <p class="cat-desc">Perfectly paired meals for every hunger mood.</p>
+        </div>
+
+        <div class="menu-grid">
+          <article class="menu-card" data-delay="90">
+            <div class="img-wrap">
+              <img src="veg makhni combo.jpg" alt="veg makhni combo">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Veg Makhni Combo</h4>
+                <p>Creamy, mildly spiced veg makhni combo that’s comforting and full of flavor.</p>
+              </div>
+              <!-- <div class="price-tag">₹90</div> -->
+            </div>
+          </article>
+
+          <article class="menu-card" data-delay="170">
+            <div class="img-wrap">
+              <img src="chicken masala combo.jpg" alt="chicken masala combo">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Chicken Masala Combo</h4>
+                <p>Delicious chicken masala combo packed with bold spices and homestyle taste.</p>
+              </div>
+              <!-- <div class="price-tag">₹120</div> -->
+            </div>
+          </article>
+
+          <article class="menu-card" data-delay="240">
+            <div class="img-wrap">
+              <img src="paneer kolapuri combo.jpg" alt="paneer kolapuri combo">
+            </div>
+            <div class="card-body">
+              <div class="meta">
+                <h4>Paneer Kolhapuri Combo</h4>
+                <p>Authentic Kolhapuri-style paneer in rich gravy served with naan.</p>
+              </div>
+              <!-- <div class="price-tag">₹80</div> -->
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Keep footer exactly the same -->
+  <footer class="site-footer" style="margin-top:60px;">
+    <div class="container footer-inner">
+      <div class="socials">
+        <a href="#" class="social" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff9933" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm5 6.5A4.5 4.5 0 1016.5 13 4.5 4.5 0 0012 8.5zm5.5-.9a1.1 1.1 0 11-1.1 1.1 1.1 1.1 0 011.1-1.1z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook" class="social">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff9933" xmlns="http://www.w3.org/2000/svg"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12H20l-1.5 2.9h-2.2v7A10 10 0 0022 12z"/></svg>
+        </a>
+        <a href="https://wa.me/911234567890" aria-label="WhatsApp" class="social">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff9933" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5A11.9 11.9 0 0012 .5 11.9 11.9 0 003.5 3.5 11.9 11.9 0 00.5 12c0 2.2.6 4.3 1.8 6.1L.1 23l5.9-1.6A11.9 11.9 0 0012 23.5a11.9 11.9 0 008.5-3.5A11.9 11.9 0 0023.5 12 11.9 11.9 0 0020.5 3.5zM12 21a9 9 0 01-4.6-1.2l-.3-.2-3.5.9 1-3.4-.2-.3A9 9 0 1112 21zm4.8-6.5c-.3-.2-1.8-.9-2-.9s-.4 0-.6.2-.7.9-.9 1.1-.4.3-.7.1c-.3-.2-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.2-.7.2-.2.5-.6.7-.9.2-.3.3-.5.5-.8.2-.3 0-.6-.1-.9-.1-.3-.6-1.5-.8-2s-.5-.4-.7-.4H8c-.3 0-.7.1-1 .1s-1 .5-1.5 1.1a4.6 4.6 0 00-.8 2.4c0 1.7.6 3.3 1.6 4.6 1 1.3 2.6 2.7 4.4 3.6 1.8.9 3 .9 3.9.8.4 0 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2-.1-.2-.3-.3-.6-.5z"/></svg>
+        </a>
+      </div>
+
+      <div class="copyright">
+        © 2025 Kaka De Kulche. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Reuse original script plus small enhancements for scroll animations -->
+  <script src="script111.js"></script>
+  <script>
+    // Menu page-specific JS: animate categories underline and cards on scroll
+    document.addEventListener('DOMContentLoaded', function () {
+      const sections = document.querySelectorAll('.menu-section');
+      const cards = document.querySelectorAll('.menu-card');
+
+      // IntersectionObserver for sections to trigger underline animation
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('inview');
+            sectionObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      sections.forEach(sec => sectionObserver.observe(sec));
+
+      // IntersectionObserver for cards to fade-up with stagger
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('inview');
+            // optional stagger using data-delay
+            const delay = parseInt(entry.target.dataset.delay || 0, 10);
+            entry.target.style.transition = `transform 420ms cubic-bezier(.2,.9,.2,1) ${delay}ms, opacity 420ms ${delay}ms`;
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      cards.forEach(c => cardObserver.observe(c));
+
+      // Small hero image subtle zoom when in view (improves perceived depth)
+      const hero = document.querySelector('.menu-hero::before');
+      // Note: pseudo-element cannot be selected — instead animate by toggling a class on the wrapper
+      const heroWrap = document.querySelector('.menu-hero');
+      if (heroWrap) {
+        const hObs = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            if (en.isIntersecting) {
+              heroWrap.querySelector('::before');
+            }
+          });
+        }, { threshold: 0.2 });
+        // no-op to keep intent; the CSS already animates scale for hero background on load
+      }
+    });
+  </script>
+</body>
+</html>
