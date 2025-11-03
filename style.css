@@ -34,6 +34,33 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
   user-select: none;
 }
 
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 5px;
+  }
+
+  .top-bar span {
+    font-size: 14px;
+    line-height: 1.4;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .top-btn {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+}
+
+
+
+
+
+
+
+
 .top-btn {
   background: #111;
   color: #fff;
@@ -54,13 +81,18 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
 
 /* Shift navbar down so logo stays visible */
 .navbar {
-  top: 40px; /* height of top bar */
+  top: 45px; /* height of top bar */
   position: fixed;
   left: 0;
   right: 0;
-  z-index: 60;
+  z-index: 100;
   /* transition: background 300ms ease, box-shadow 300ms ease; */
   background-color: transparent;
+
+
+
+
+  
 }
 .navbar.solid {
   background: rgba(14,14,14,0.95);
@@ -73,10 +105,23 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
   padding: 18px 0;
 }
 .logo {
-  height: 100px;
+  height: 85px;
   display: block;
-  margin-left: -45px;
+  margin-left: 10px;
+  object-fit: contain;
+  max-width: 100%;
 }
+
+@media (max-width: 600px) {
+  .logo {
+    height: 70px;
+    margin-left: 10px;
+  }
+}
+
+
+
+
 .nav-links {
   display: flex;
   gap: 24px;
@@ -100,14 +145,80 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
   color: var(--text);
   font-size: 22px;
 }
-.hero {
-  height: 100vh; /* make hero full screen */
+/*.hero {
+  height: 100vh; /* make hero full screen 
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  margin-top: 0; /* remove extra top space */
+  margin-top: 0;  
+}*/
+
+/* Fix hero responsiveness */
+.hero {
+  height: 90vh;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px; /* pushes below fixed top-bar + navbar */
 }
+
+@media (max-width: 1024px) {
+  .hero {
+    margin-top: 100px;
+    height: 85vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin-top: 90px;
+    height: 70vh;
+  }
+  .hero-title {
+    font-size: 30px;
+  }
+  .hero-sub {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    margin-top: 80px;
+    height: 60vh;
+  }
+  .hero-content {
+    padding: 0 20px;
+  }
+  .hero-title {
+    font-size: 26px;
+  }
+  .hero-sub {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Each slide image also full height */
 .carousel-item {
@@ -636,3 +747,32 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
 }
 
 /* Responsive layout for smaller screens */
+
+@media (max-width: 600px) {
+  .logo {
+    height: 70px;
+    margin-left: 10px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    text-align: center;
+    padding: 8px 5px;
+  }
+
+  .top-bar span {
+    font-size: 14px;
+    line-height: 1.4;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .top-btn {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
+
+  .hero {
+    margin-top: 100px;
+  }
+}
