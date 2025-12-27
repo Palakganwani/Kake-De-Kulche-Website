@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kake De Kulche | Franchise Opportunity</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+
+/* Mobile Navbar */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    font-size: 26px;
+    color: #fff;
+    background: none;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(0,0,0,0.95);
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 12px;
+    display: none; /* hidden by default */
+  }
+
+  .nav-links a {
+    color: #fff;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 48px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  margin-left: auto;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover,
+.franchise-link {
+  color: #e1ad01;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+
+
+
+
+
+    /* :root { 
+      --dark: #121212;
+      --primary: #b45f3a;
+      --accent: #e1ad01;
+      --light: #ffffff;
+      --text: #000000;
+      --serif: 'Playfair Display', serif;
+      --sans: 'Inter', sans-serif;
+    }*/
+
+
+:root {
+      --bg:#081c2b;
+      --card: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.08);
+      --accent:#e1ad01;
+      --primary:#b45f3a;
+      --text:#000000;
+      --muted:#f6f2f2;
+      --serif:'Playfair Display', serif;
+      --sans:'Inter', sans-serif;
+    }
+
+
+
+
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      /* font-family: var(--sans); 
+      background: var(--light);*/
+
+  background: #081c2b; /* website dark blue  This one*/
+  color: #f5f5f5;
+
+
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.65)
+      ), url('logo.jpeg') center/cover no-repeat;
+      color: #fff;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* SECTION */
+    section {
+      padding: 70px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* .section-title { 
+      text-align: center;
+      margin-bottom: 50px;
+    }*/
+
+.section-title h2 {
+  color: #ffffff;
+}
+.section-title p {
+  color: #bdbdbd;
+}
+
+
+
+
+
+
+    .section-title h2 {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #666;
+    }
+
+    /* MODEL BOXES */
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .box { 
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(250, 247, 247, 0.06);
+      transition: 0.3s;
+    }
+
+   
+
+
+
+
+
+
+
+
+
+
+
+    .box:hover {
+      transform: translateY(-6px);
+    }
+
+    .box h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    /* HIGHLIGHTS */
+    .highlight {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .highlight h2 {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .highlight p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+
+    /* SUPPORT */
+    .support-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+     .support-item { 
+      background: #fff;
+      padding: 25px;
+      border-left: 5px solid var(--accent);
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    }
+
+
+
+
+
+
+
+    /* CTA */
+    .cta {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .cta h2 {
+      font-family: var(--serif);
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 14px 35px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .cta a:hover {
+      background: #c99700;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+
+
+    /* .modal { 
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.modal-box h3 {
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.modal-btn {
+  display: block;
+  padding: 12px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.modal-btn.call {
+  background: #e1ad01;
+  color: #000;
+}
+
+.modal-btn.whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #777;
+}*/
+
+
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; /* IMPORTANT for small screens */
+}
+
+.modal-box {
+  background: #fff;
+  padding: 28px 22px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.modal-box h3 {
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.modal-box p {
+  margin-bottom: 22px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-bottom: 14px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.modal-btn.call {
+  background: #e1ad01;
+  color: #000;
+}
+
+.modal-btn.whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  margin-top: 8px;
+  cursor: pointer;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* 📱 Extra mobile safety */
+@media (max-width: 480px) {
+  .modal-box {
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<header id="header" class="navbar">
+  <!-- <div class="container nav-inner"> -->
+    <div class="nav-inner">
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="logoimage (1).png" alt="Kaka De Kulche Logo" class="logo" />
+      </a>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="index.html#about" class="nav-link">About</a>
+      <a href="index.html#menu" class="nav-link">Menu</a>
+      <a href="index.html#reviews" class="nav-link">Reviews</a>
+      <a href="franchise.html" class="nav-link franchise-link">Franchise</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="toggle menu">&#9776;</button>
+  </div>
+</header>
+
+
+
+
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Franchise Opportunity</h1>
+    <p>
+      Partner with <strong>Kake De Kulche</strong> — a proven, low-risk business
+      model designed for high returns with minimal operational effort.
+    </p>
+  </div>
+
+  <!-- MODEL -->
+  <section>
+    <div class="section-title">
+      <h2 style="color: #ffffff;">Our Business Model</h2>
+      <p style="color: #c99700;">Built for efficiency, profitability, and ease of operations</p>
+    </div>
+
+    <div class="model-grid">
+      <div class="box">
+        <h3>70% Lower Operational Cost</h3>
+        <p>
+          Our standardized menu, centralized sourcing, and optimized kitchen
+          processes reduce daily operational costs by up to <strong>70%</strong>.
+        </p>
+      </div>
+
+      <div class="box">
+        <h3>Fast Return on Investment</h3>
+        <p>
+          With strong brand recall and controlled expenses,
+          franchise partners can expect <strong>ROI within the first year</strong>.
+        </p>
+      </div>
+
+      <div class="box">
+        <h3>Ideal for Professionals</h3>
+        <p>
+          Perfect for working professionals and entrepreneurs who want
+          a profitable venture without investing excessive time daily.
+        </p>
+      </div>
+
+      <div class="box">
+        <h3>Low Setup Investment</h3>
+        <p>
+          Total setup cost ranges between <strong>₹3 – ₹5 lakhs</strong>,
+          making it one of the most affordable food franchise opportunities.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHT -->
+  <div class="highlight">
+    <h2>Start Smart. Grow Fast.</h2>
+    <p>
+      A compact setup, strong backend support, and a trusted food brand
+      ensure consistent growth and peace of mind for every franchise partner.
+    </p>
+  </div>
+
+  <!-- SUPPORT -->
+  <section>
+    <div class="section-title">
+      <h2 style="color: #fefefe;">We Support You At Every Step</h2>
+      <p style="color: #c99700;">You focus on growth, we handle the rest</p>
+    </div>
+
+    <div class="support-list">
+      <div class="support-item">Staff hiring & training support</div>
+      <div class="support-item">Raw material & supply chain support</div>
+      <div class="support-item">Marketing & advertisement assistance</div>
+      <div class="support-item">Operational guidance & SOPs</div>
+      <div class="support-item">Branding & promotional materials</div>
+      <div class="support-item">Continuous business support</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Ready to Become a Franchise Partner?</h2>
+    <p>
+      Take the first step towards owning a profitable food business with
+      minimal risk and maximum support.
+    </p>
+    <!-- <a href="contact.html">Apply for Franchise</a> -->
+
+
+    <a href="javascript:void(0)"
+   id="openFranchiseModal"
+   class="apply-btn">
+  Apply for Franchise
+</a>
+
+  </div>
+
+  <div id="franchiseModal" class="modal">
+  <div class="modal-box">
+    <h3>Franchise Enquiry</h3>
+    <p>Connect with us to start your franchise journey.</p>
+
+    <a href="tel:+918949058360" class="modal-btn call">📞 Call Now</a>
+    <a href="https://wa.me/918949058360" target="_blank" class="modal-btn whatsapp">💬 WhatsApp</a>
+
+    <button class="close-btn" id="closeFranchiseModal">Close</button>
+  </div>
+</div>
+
+
+
+<script>
+const modal = document.getElementById("franchiseModal");
+document.getElementById("openFranchiseModal").onclick = () => {
+  modal.style.display = "flex";
+};
+document.getElementById("closeFranchiseModal").onclick = () => {
+  modal.style.display = "none";
+};
+</script>
+
+
+</body>
+</html>
