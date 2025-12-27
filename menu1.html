@@ -69,6 +69,73 @@
       margin: 0;
     }
 
+
+.bestseller-cta {
+  text-align: center;
+  margin-top: 20px;
+  padding: 0 15px;
+}
+
+.bestseller-sub {
+  color: #cfd8dc;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* Button */
+.menu-cta-btn {
+  display: inline-block;
+  padding: 12px 38px;
+  background-color: #ff8903; /* mustard */
+  color: #12151c;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover (desktop) */
+.menu-cta-btn:hover {
+  background-color: #c99700;
+  transform: translateY(-2px);
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+  .bestseller-sub {
+    font-size: 0.95rem;
+  }
+
+  .menu-cta-btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px 0;
+    font-size: 0.95rem;
+  }
+}
+
+/* 📱 Small Phones */
+@media (max-width: 480px) {
+  .bestseller-sub {
+    font-size: 0.9rem;
+  }
+
+  .menu-cta-btn {
+    max-width: 240px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
     /* Category heading with accent underline animation */
     .menu-section {
       padding: 64px 0;
@@ -222,6 +289,84 @@
     /* small utilities */
     .category-wrapper { margin-top: 12px; }
     .section-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+
+
+
+    /* WhatsApp Order Section Wrapper */
+.whatsapp-order-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+}
+
+/* Card Style */
+.whatsapp-order-card {
+  background: linear-gradient(180deg, #0e1b26, #08131d);
+  border-radius: 18px;
+  padding: 28px 32px;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Text */
+.order-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.order-sub {
+  color: #cfd8dc;
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+  display: inline-block;
+  background: #25D366;
+  color: #ffffff;
+  padding: 14px 42px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .whatsapp-order-card {
+    padding: 24px 20px;
+  }
+
+  .whatsapp-btn {
+    width: 100%;
+    padding: 15px 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
   </style>
 </head>
 <body>
@@ -236,6 +381,7 @@
         <a href="index.html#about" class="nav-link">About</a>
         <a href="index.html#menu" class="nav-link">Menu</a>
         <a href="index.html#reviews" class="nav-link">Reviews</a>
+         <a href="franchise.html" class="nav-link">franchise</a>
         <a href="index.html#contact" class="nav-link">Contact</a>
       </nav>
       <button class="nav-toggle" aria-label="toggle menu">☰</button>
@@ -247,9 +393,55 @@
     <div class="overlay"></div>
     <div class="hero-inner">
       <h1 class="hero-title">Our Bestsellers 🍽️</h1>
-      <p class="hero-sub">From street classics to chef’s specials — taste the real flavor of Kaka De Kulche.</p>
+      <p class="hero-sub">From street classics to chef’s specials — taste the real flavor of Kake De Kulche.</p>
     </div>
   </section>
+<div class="bestseller-cta">
+  <p class="bestseller-sub">
+   
+  </p>
+
+  <a
+    href="Kake 2 Menu card (4).pdf"
+    target="_blank"
+    class="menu-cta-btn"
+  >
+    View Full Menu
+  </a>
+</div>
+
+
+
+<!-- WhatsApp Order CTA -->
+<div class="whatsapp-order-wrapper">
+  <div class="whatsapp-order-card">
+    <p class="order-title">📲 Place Your Order on WhatsApp</p>
+    <p class="order-sub">Fast • Fresh • Direct from Kitchen</p>
+
+    <a
+      href="https://wa.me/917709052854?text=Hi%20I%20want%20to%20place%20an%20order%20from%20Kaka%20De%20Kulche"
+      target="_blank"
+      class="whatsapp-btn"
+    >
+      💬 Order on WhatsApp
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- MENU CONTENT -->
   <main>
@@ -318,12 +510,12 @@
         <div class="menu-grid">
           <article class="menu-card" data-delay="60">
             <div class="img-wrap">
-              <img src="EggMainCorse.jpg" alt="Egg Biryani Bucket">
+              <img src="kake chole kulche.jpg" alt="Egg Biryani Bucket">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Egg Biryani Bucket</h4>
-                <p>Delicious egg biryani infused with bold spices and slow-cooked perfection.</p>
+                <h4>Chhole Kulche</h4>
+                <p>Delicious Chhole Kulche infused with bold spices and slow-cooked perfection.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div>
@@ -331,12 +523,12 @@
 
           <article class="menu-card" data-delay="140">
             <div class="img-wrap">
-              <img src="paneerkholapuri main corse.jpg" alt="paneerkholapuri">
+              <img src="chhole bhutre.jpg" alt="paneerkholapuri">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Paneer Kholapuri</h4>
-                <p>Soft paneer cubes simmered in fiery Kolhapuri gravy and aromatic spices.</p>
+                <h4>Chhole Bhature</h4>
+                <p>Slow-cooked spicy chickpeas tossed in rich desi masala, served hot with fluffy golden-fried bhature.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div> 
@@ -344,12 +536,12 @@
 
           <article class="menu-card" data-delay="210">
             <div class="img-wrap">
-              <img src="paneer kadai kulche main.jpg" alt="paneer kadai kulche">
+              <img src="67-PaneerMakhniKulche.jpg" alt="paneer kadai kulche">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Paneer Kadai Kulche</h4>
-                <p>Flavorful paneer kadai paired with warm, fluffy kulchas.</p>
+                <h4>Paneer Makhni Kulche</h4>
+                <p>Flavorful Paneer Makhni Kulche paired with warm, fluffy kulchas.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div> 
@@ -369,12 +561,12 @@
         <div class="menu-grid">
           <article class="menu-card" data-delay="80">
             <div class="img-wrap">
-              <img src="bhuna chicken biryani bucket.jpg" alt="bhuna chicken biryani bucket">
+              <img src="DSC09425.jpg" alt="bhuna chicken biryani bucket">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Bhuna Chicken Biryani Bucket</h4>
-                <p>Juicy chicken slow-cooked in bhuna-style gravy and mixed with flavourful biryani rice.</p>
+                <h4>Chicken Biryani with Chicken Tikka Combo</h4>
+                <p>Aromatic chicken biryani paired with perfectly grilled, smoky chicken tikka for a complete feast.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div> 
@@ -382,12 +574,12 @@
 
           <article class="menu-card" data-delay="160">
             <div class="img-wrap">
-              <img src="veg biryani.jpg" alt="Masala Chaas">
+              <img src="DSC09390.jpg" alt="Masala Chaas">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Veg Biryani Bucket</h4>
-                <p>Wholesome vegetable biryani cooked to perfection with fragrant basmati rice.</p>
+                <h4>Veg Biryani With Kebabs Combo</h4>
+                <p>Aromatic veg biryani cooked with fragrant spices, served with crispy, flavour-packed veg kebabs.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div>
@@ -395,12 +587,12 @@
 
           <article class="menu-card" data-delay="230">
             <div class="img-wrap">
-              <img src="panner ticka biryani bucket.jpg" alt="panner ticka biryani">
+              <img src="bhuna chicken biryani bucket.jpg" alt="panner ticka biryani">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Panner Tikka Biryani Bucket</h4>
-                <p>Smoky paneer tikka layered with flavorful biryani rice and rich spices.</p>
+                <h4>Bhuna Chicken Biryani Bucket</h4>
+                <p>Slow-cooked bhuna chicken layered with aromatic biryani rice, packed with bold desi flavours.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
              </div> 
@@ -420,12 +612,12 @@
         <div class="menu-grid">
           <article class="menu-card" data-delay="90">
             <div class="img-wrap">
-              <img src="veg makhni combo.jpg" alt="veg makhni combo">
+              <img src="104-PaneerLababdarCombo.jpg" alt="veg makhni combo">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Veg Makhni Combo</h4>
-                <p>Creamy, mildly spiced veg makhni combo that’s comforting and full of flavor.</p>
+                <h4>Paneer Lababdar Combo</h4>
+                <p>Creamy tomato-onion gravy with soft paneer cubes, served as a wholesome, satisfying combo.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div>
@@ -433,12 +625,12 @@
 
           <article class="menu-card" data-delay="170">
             <div class="img-wrap">
-              <img src="chicken masala combo.jpg" alt="chicken masala combo">
+              <img src="combo.jpg" alt="chicken masala combo">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Chicken Masala Combo</h4>
-                <p>Delicious chicken masala combo packed with bold spices and homestyle taste.</p>
+                <h4>Butter Chicken </h4>
+                <p>Delicious Butter chicken combo packed with bold spices and homestyle taste.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div>
@@ -446,12 +638,12 @@
 
           <article class="menu-card" data-delay="240">
             <div class="img-wrap">
-              <img src="paneer kolapuri combo.jpg" alt="paneer kolapuri combo">
+              <img src="175-ChickenLababdarCombo.jpg" alt="ChickenLababdar Combo">
             </div>
             <div class="card-body">
               <div class="meta">
-                <h4>Paneer Kolhapuri Combo</h4>
-                <p>Authentic Kolhapuri-style paneer in rich gravy served with naan.</p>
+                <h4>Chicken Lababdar Combo</h4>
+                <p>Tender chicken pieces cooked in rich, creamy tomato gravy with mild spices, served as a hearty combo.</p>
               </div>
               <!-- Price tag commented out, kept as is -->
             </div>
@@ -477,7 +669,7 @@
       </div>
 
       <div class="copyright">
-        © 2025 Kaka De Kulche. All Rights Reserved.
+        © 2025 Kake De Kulche. All Rights Reserved.
       </div>
     </div>
   </footer>
