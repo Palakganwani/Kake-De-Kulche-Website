@@ -58,11 +58,6 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
 
 
 
-
-
-
-
-
 .top-btn {
   background: #111;
   color: #fff;
@@ -103,9 +98,6 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
 }
 
 
-
-
-  
 
 .navbar.solid {
   background: rgba(14,14,14,0.95);
@@ -226,21 +218,6 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
 .top-btn {
   pointer-events: auto;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -818,6 +795,7 @@ html,body{height:100%;margin:0;font-family:var(--sans);background:var(--bg);colo
     margin-top: 100px;
   }
 }
+
 
 
 
