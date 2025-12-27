@@ -18,11 +18,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const joinNowBtn = document.getElementById('join-now-btn');
 
   // ---------- TOP BAR JOIN NOW ALERT ----------
-  if (joinNowBtn) {
-    joinNowBtn.addEventListener('click', () => {
-      alert('📞 Contact us for franchise: +91 8949058360');
-    });
-  }
+   // if (joinNowBtn) {
+    // joinNowBtn.addEventListener('click', () => {
+      // <button class="top-btn" onclick="window.location.href='franchise.html'">
+      // alert("Contact us for franchise...")
+  // Join Now
+    // })}
+// </button>
+
+    // });
+  // }
 
   // ---------- NAVBAR SOLID ON SCROLL ----------
   function handleNavScroll() {
@@ -196,4 +201,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+
+
+const modal = document.getElementById("franchiseModal");
+document.getElementById("openFranchiseModal").onclick = () => {
+  modal.style.display = "flex";
+};
+document.getElementById("closeFranchiseModal").onclick = () => {
+  modal.style.display = "none";
+};
+
+
+
+
+
 }); // End DOMContentLoaded
