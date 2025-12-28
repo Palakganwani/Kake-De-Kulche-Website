@@ -454,6 +454,45 @@
 
 
 
+/* Mobile Navbar */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    font-size: 26px;
+    color: #fff;
+    background: none;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(0,0,0,0.95);
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: 12px;
+    display: none;   /* 👈 IMPORTANT */
+  }
+
+  .nav-links a {
+    color: #fff;
+  }
+
+  .nav-links.show {
+    display: flex;   /* 👈 toggle ke time */
+  }
+}
+
+
+
+
+
+
+
 
 
 
@@ -471,7 +510,9 @@
       </a>
     </div>
 
-    <nav class="nav-links">
+    <!-- <nav class="nav-links"> -->
+      <button class="nav-toggle" id="navToggle" aria-label="toggle menu">&#9776;</button>
+      <nav class="nav-links" id="navLinks">
       <a href="index.html#home" class="nav-link">Home</a>
       <a href="index.html#about" class="nav-link">About</a>
       <a href="index.html#menu" class="nav-link">Menu</a>
@@ -480,7 +521,7 @@
       <a href="index.html#contact" class="nav-link">Contact</a>
     </nav>
 
-    <button class="nav-toggle" aria-label="toggle menu">&#9776;</button>
+    <!-- <button class="nav-toggle" aria-label="toggle menu">&#9776;</button> -->
   </div>
 </header>
 
@@ -605,6 +646,28 @@ document.getElementById("openFranchiseModal").onclick = () => {
 document.getElementById("closeFranchiseModal").onclick = () => {
   modal.style.display = "none";
 };
+
+
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+
+  // Optional: menu item click pe auto close
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+    });
+  });
+
+
+
+
+
+
+
 </script>
 
 
